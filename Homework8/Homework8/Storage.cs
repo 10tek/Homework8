@@ -8,19 +8,21 @@ namespace Homework8
 {
     abstract public class Storage
     {
-        private string _carrierName;
-        private string _carrierModel;
+        protected string CarrierName { get; set; }
+        protected string CarrierModel { get; set; }
+        public int CopySpeed { get; set; }
         public int GlobalMemory { get; set; }
-        public int FreeMemory { get; set; }
         public int OccupiedMemory { get; set; }
 
-        public Storage(string carrierName, string carrierModel)
+        public Storage(string carrierName, string carrierModel, int globalMemory)
         {
-            _carrierModel = carrierModel;
-            _carrierName = carrierName;
+            GlobalMemory = globalMemory;
+            CarrierModel = carrierModel;
+            CarrierName = carrierName;
         }
 
-        public abstract int CopyData(params int[] datas);
-        public abstract string GetInfo();
+        public abstract void CopyData(params int[] datas);
+        public abstract int GetFreeMemory();
+        public abstract void GetInfo();
     }
 }
